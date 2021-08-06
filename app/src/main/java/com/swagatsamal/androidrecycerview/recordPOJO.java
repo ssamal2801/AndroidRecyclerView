@@ -4,10 +4,9 @@ import android.media.Image;
 
 public class recordPOJO {
     int productID;
-    int id;
     String productName;
-    Double price;
-    Image productImage;
+    double price;
+    int productImage;
 
     public int getProductID() {
         return productID;
@@ -15,14 +14,6 @@ public class recordPOJO {
 
     public void setProductID(int productID) {
         this.productID = productID;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getProductName() {
@@ -33,19 +24,26 @@ public class recordPOJO {
         this.productName = productName;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public Image getProductImage() {
+    public int getProductImage() {
         return productImage;
     }
 
-    public void setProductImage(Image productImage) {
+    public void setProductImage(int productImage) {
         this.productImage = productImage;
+    }
+
+    @Override
+    public String toString() {
+        return "productID: " + productID +
+                "\n productName: " + productName +
+                "\n price: " + price;
     }
 }

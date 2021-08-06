@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,12 @@ import java.util.List;
 public class AdapterConversion extends RecyclerView.Adapter<AdapterConversion.ViewHolder> {
 
     Context context;
-    List<String> students;
+    List<recordPOJO> items;
 
-    public AdapterConversion(Context context, List<String> students)
+    public AdapterConversion(Context context, List<recordPOJO> items)
     {
         this.context = context;
-        this.students = students;
+        this.items = items;
     }
 
     //finally inflate the view
@@ -32,22 +33,24 @@ public class AdapterConversion extends RecyclerView.Adapter<AdapterConversion.Vi
         return new ViewHolder(view);
     }
 
-    //bind the position returned by ViewHolder class
+    //bind the record to the view
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(students.get(position));
+        holder.textView.setText(items.get(position).toString());
+        holder.imageView.setImageResource(items.get(position).getProductImage());
     }
 
     //This method will return the number of records in the result set
     //makes sure the number of rows in recycler view is equal to the number of record in result set
     @Override
     public int getItemCount() {
-        return students.size();
+        return items.size();
     }
 
     //initiate the text view which acts as container for each record
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView textView = itemView.findViewById(R.id.textView);
+        ImageView imageView = itemView.findViewById(R.id.imageView);
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
